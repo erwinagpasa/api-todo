@@ -9,6 +9,10 @@ const resolvers = {
     getTodos: async () => {
       const todos = await Todo.find();
       return todos;
+    },
+    getTodo: async (root, args) => {
+      const todo = await Todo.findById(args.id);
+      return todo;
     }
   },
   Mutation: {

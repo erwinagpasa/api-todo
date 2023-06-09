@@ -7,7 +7,7 @@ const todoSchema = new Schema({
     required: true
   },
 
-  details:String,
+  detail:String,
   date:Date
 
 

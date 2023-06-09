@@ -14,6 +14,7 @@ type Todo {
 type Query {
   welcome: String
   getTodos:[Todo]
+  getTodo(id:ID):Todo #this is not array just getting individual todo
 }
 type Mutation {
   addTodo(title:String, detail:String, date:Date):Todo
