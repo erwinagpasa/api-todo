@@ -17,7 +17,7 @@ const resolvers = {
   },
   Mutation: {
     addTodo: async (root, args) => {
-      const newTodo = new Todo({title:args.title, detail:args.detail, date:args.date})
+      const newTodo = new Todo({role:args.role, title:args.title, detail:args.detail, date:args.date})
       await newTodo.save();
       return newTodo;
     },
@@ -26,8 +26,12 @@ const resolvers = {
       return "Todo deleted successfully";
     },    
     updateTodo: async (root, args) => {
-      const {id,title,detail,date} = args;
+      const {id, role, title, detail, date} = args;
       const updatedTodo = {};
+      
+      if(role !== undefined){
+        updatedTodo.role = role;      
+      };
 
       if(title !== undefined){
         updatedTodo.title = title;      
@@ -41,7 +45,8 @@ const resolvers = {
         updatedTodo.date = date;      
       };
 
-      const todo = await Todo.findByIdAndUpdate(id,updatedTodo,{new:true});
+    
+      const todo = await Todo.findByIdAndUpdate(id, updatedTodo,{new:true});
       return todo;
     }
 

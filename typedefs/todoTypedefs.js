@@ -1,11 +1,12 @@
 
 import { gql } from 'apollo-server-express';
 
-const typeDefs = gql`
+const todoTypeDefs = gql`
 scalar Date
 
 type Todo {
   id:ID
+  role:String
   title:String
   detail:String
   date: Date
@@ -17,10 +18,11 @@ type Query {
   getTodo(id:ID):Todo #this is not array just getting individual todo
 }
 type Mutation {
-  addTodo(title:String, detail:String, date:Date):Todo
+  addTodo(role:String, title:String, detail:String, date:Date):Todo
   deleteTodo(id:ID):String
-  updateTodo(id:ID,title:String, detail:String, date:Date):Todo
+  updateTodo(id:ID, role:String, title:String, detail:String, date:Date):Todo
 }
 `
 
-export default typeDefs;
+// module.exports = todoTypeDefs;
+export default todoTypeDefs;

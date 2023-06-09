@@ -1,21 +1,25 @@
 import mongoose from 'mongoose'; 
 
 const Schema = mongoose.Schema;
-const todoSchema = new Schema({
+const staffSchema = new Schema({
   role:{
     type:String,
     required:true
   },
 
-  title: {
+  stfn: {
     type:String,
     required: true
   },
 
-  detail:String,
+  name: {
+    type:String,
+    required: true
+  },
+
   date:Date
 
 },{timestamps:true});
 
-const Todo = mongoose.model('todo',todoSchema);
-export default Todo;
+const Staff = mongoose.model('staff',staffSchema);
+export default Staff;

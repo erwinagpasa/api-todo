@@ -1,7 +1,7 @@
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
-import typeDefs  from './typedefs/todoTypedefs.js'
-import resolvers from './resolvers/todoResolvers.js'
+import allTypeDefs from './typedefs/index.js'
+import allResolver from './resolvers/index.js'
 import mongoose  from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -15,8 +15,9 @@ async function initServer(){
   dotenv.config();
 
   const apolloServer = new ApolloServer({
-    typeDefs,
-    resolvers
+
+    typeDefs:allTypeDefs,
+    resolvers:allResolver,
   })
 
   await apolloServer.start();
