@@ -18,6 +18,8 @@ type Query {
 }
 type Mutation {
   addTodo(title:String, detail:String, date:Date):Todo
+  deleteTodo(id:ID):String
+  updateTodo(title:String, detail:String, date:Date):Todo
 }
 `
 
